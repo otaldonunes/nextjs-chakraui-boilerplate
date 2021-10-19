@@ -1,6 +1,8 @@
 import { AppProps } from 'next/app';
 import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from '../styles/theme';
+import { QueryClientProvider, QueryClient } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 // Implementação MirageJS (Delete essa linha)
 // import { makeServer } from '../services/mirage';
 
@@ -8,11 +10,17 @@ import { theme } from '../styles/theme';
 //   makeServer();
 // }
 
+const queryClient = new QueryClient();
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <QueryClientProvider client={queryClient}>
+      <ChakraProvider theme={theme}>
+        <Component {...pageProps} />
+      </ChakraProvider>
+      {/* Excluir 'ReactQueryDevtools' em produção */}
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   );
 }
 
