@@ -1,28 +1,42 @@
-import { useQuery } from 'react-query';
-import { api } from '@services/api';
+// import { useQuery } from 'react-query';
+// import { api } from '@services/api';
 
-type User = {
-  id: string;
-  title: string;
-  description: string;
-};
+// type User = {
+//   id: string;
+//   title: string;
+//   description: string;
+// };
 
-export async function getSomething(): Promise<User[]> {
-  const { data } = await api.get('/something');
+// type SetSomethingResponse = {
+//   totalCount: number;
+//   something: User[];
+// };
 
-  const something = data.something.map((something) => {
-    return {
-      id: something.id,
-      title: something.title,
-      description: something.description,
-    };
-  });
+// export async function getSomething(
+//   page: number
+// ): Promise<SetSomethingResponse> {
+//   // change this to your API call
+//   const { data, headers } = await api.get('/something', {
+//     params: {
+//       page,
+//     },
+//   });
 
-  return something;
-}
+//   const totalCount = Number(headers['x-total-count']);
 
-export function useSomething() {
-  return useQuery('something', getSomething, {
-    staleTime: 1000 * 60 * 60, // 1 hour
-  });
-}
+//   const something = data.something.map((something) => {
+//     return {
+//       id: something.id,
+//       title: something.title,
+//       description: something.description,
+//     };
+//   });
+
+//   return { something, totalCount };
+// }
+
+// export function useSomething(page: number) {
+//   return useQuery(['something', page], () => getSomething(page), {
+//     staleTime: 1000 * 60 * 60, // 1 hour
+//   });
+// }
