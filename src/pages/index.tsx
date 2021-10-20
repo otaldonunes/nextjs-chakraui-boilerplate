@@ -1,5 +1,5 @@
 import { Flex, Text } from '@chakra-ui/react';
-// import { useSomething } from '../hooks/useSomething'; //React Query/Axios Hook Example
+// import { useSomething } from '@hooks/useSomething'; //React Query/Axios Hook Example
 
 export default function Home() {
   // const { data, isLoading, isFetching, error } = useSomething();
